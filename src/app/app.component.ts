@@ -21,14 +21,30 @@ export class AppComponent implements OnInit{
     zoom:16.6
     });
 
-    this.marcador(-88.93968893127821,14.040098665086017);
+    ///
+    //consultar todos los comercios
+    var establecimientos=[
+          {lon:-88.93968893127821,lat:14.040098665086017,nombre:'Comercio 1',id:'id1'},
+          {lon:-88.9396001546189,lat:14.040006628328758,nombre:'Comercio 2',id:'id2'},
+          {lon:-88.93942044660623,lat:14.039866115824907,nombre:'Comercio 3',id:'id3'},
+          {lon:-88.93924140914588,lat:14.03985635800893,nombre:'Comercio 4',id:'id4'}
+
+    ]
+    establecimientos.forEach(comercio => {
+      this.marcador(comercio.lon,comercio.lat);
+    });
+    
+    
+
+    
 
   }
 
 
   marcador(lon:number,lat:number){
+    
     const marca=new Mapboxgl.Marker({
-      draggable:true
+      draggable:false
     })
     .setLngLat([lon,lat])
     .addTo(this.mapa);
