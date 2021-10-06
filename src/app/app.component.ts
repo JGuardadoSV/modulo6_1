@@ -44,13 +44,15 @@ export class AppComponent implements OnInit{
   marcador(lon:number,lat:number,nombre:string){
 
 
-    const globo= new Mapboxgl.Popup()
-                .setHTML(`<p> ${nombre} </p>`);
+    const globo= new Mapboxgl.Popup({className:'globito'})
+                .setHTML(`<p> ${nombre} </p>`)
+                
 
 
     
     const marca=new Mapboxgl.Marker({
-      draggable:false
+      draggable:false,
+      color:"orange"
     })
     .setLngLat([lon,lat])
     .setPopup(globo)
