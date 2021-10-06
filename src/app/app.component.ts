@@ -35,17 +35,26 @@ export class AppComponent implements OnInit{
     });
     
     
+  } // Fin oninit
 
-    
 
+  //Funciones cuando se haga clic sobre un pin/marcador
+
+  abrir=(nombre:string)=>{
+    console.log("Se abrió el popup del comercio: " + nombre)
   }
 
+  cerrar=(nombre:string)=>{
+    console.log("Se cerró el popup del comercio: " + nombre)
+  }
   //Puede evaluar enviar el objeto comercio y no propiedades por separado
   marcador(lon:number,lat:number,nombre:string){
 
 
     const globo= new Mapboxgl.Popup({className:'globito'})
                 .setHTML(`<p> ${nombre} </p>`)
+                .on('open',()=>{ this.abrir(nombre)  })
+                .on('close',()=>{ this.cerrar(nombre)  })
                 
 
 
