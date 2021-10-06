@@ -31,7 +31,7 @@ export class AppComponent implements OnInit{
 
     ]
     establecimientos.forEach(comercio => {
-      this.marcador(comercio.lon,comercio.lat);
+      this.marcador(comercio.lon,comercio.lat,comercio.nombre);
     });
     
     
@@ -40,13 +40,20 @@ export class AppComponent implements OnInit{
 
   }
 
+  //Puede evaluar enviar el objeto comercio y no propiedades por separado
+  marcador(lon:number,lat:number,nombre:string){
 
-  marcador(lon:number,lat:number){
+
+    const globo= new Mapboxgl.Popup()
+                .setHTML(`<p> ${nombre} </p>`);
+
+
     
     const marca=new Mapboxgl.Marker({
       draggable:false
     })
     .setLngLat([lon,lat])
+    .setPopup(globo)
     .addTo(this.mapa);
 
     marca.on;
