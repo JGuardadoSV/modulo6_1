@@ -60,14 +60,14 @@ export class AppComponent implements OnInit{
 
     
     const marca=new Mapboxgl.Marker({
-      draggable:false,
+      draggable:true,
       color:"orange"
     })
     .setLngLat([lon,lat])
     .setPopup(globo)
     .addTo(this.mapa);
 
-    marca.on;
+    marca.on('dragend',()=>{ console.log(marca.getLngLat()) });
   }
 
 }
